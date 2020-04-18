@@ -16,37 +16,58 @@ namespace ConsoleUI
 
             #region Vehicles
 
-            /*
-             * Create an abstract class called Vehicle
-             * The vehicle class shall have three string properties Year, Make, and Model
-             * Set the defaults to something generic in the Vehicle class
-             * Vehicle shall have an abstract method called DriveAbstract with no implementation
-             * Vehicle shall have a virtual method called DriveVirtual with a base implementation.
-             */
 
-            /* 
-             * Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
-             * Add a distict property in the 2 derived classes such as HasTrunk for Car and HasSideCart for Motorcycle
-             * Provide the implementations for the abstract methods
-             * Only in the Motorcycle class will you override the virtual drive method
-            */
+            //Create an abstract class called Vehicle
+            // Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
 
             // Create a list of Vehicle called vehicles
-
+            
+            var vehicles = new List<Vehicle>();
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
+            Car car = new Car() { Year = 1999, Make = "Buick", Model = "Century", HasTrunk = true };
+            Motorcycle cycle = new Motorcycle() { Year = 1994, Make = "Honda", Model = "Ninja", HasSideCart = false };
+            Vehicle vehicle1 = new Car() { Year = 2019, Make = "Kia", Model = "Forte", HasTrunk = true };
+            Vehicle vehicle2 = new Motorcycle() { Year = 1997, Make = "Harley Davidson", Model = "Softtail", HasSideCart = false };
+
+
+            /*cycle.Make = "Honda";
+            cycle.Model = "Ninja";
+            cycle.Year = 1994;
+
+            vehicle1.Make = "Kia";
+            vehicle1.Model = "Forte";
+            vehicle1.Year = 2019;
+
+            vehicle2.Make = "Harley Davidson";
+            vehicle2.Model = "Softail";
+            vehicle2.Year = 1997;
 
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
+            vehicles.Add(car);
+            vehicles.Add(cycle);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
 
-            // Call each of the drive methods for one car and one motorcycle
+            foreach(var item in vehicles)
+            {
+                Console.WriteLine($"Year: {item.Year} Make: {item.Make} Model: {item.Model}");
+                item.DriveAbstract();
+                item.DriveVirtual();
+            }
 
-            #endregion            
+            /* Call each of the drive methods for one car and one motorcycle
+            vehicle1.DriveAbstract();
+            vehicle1.DriveVirtual();
+            vehicle2.DriveVirtual();*/
+            
+            #endregion
             Console.ReadLine();
         }
     }
